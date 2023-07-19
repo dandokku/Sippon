@@ -1,0 +1,241 @@
+@font-face {
+    font-family: hh;
+    src: url('/css/fonts/Orbitron/Orbitron-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: pp;
+  src: url('/css/fonts/Poppins/Poppins-Regular.ttf');
+}
+
+
+:root{
+    --pup1: #110011;
+  --pup2: #000514;
+  --pup3: #437df1;
+  --pup3t: rgba(145, 94, 255, 0.2);
+  --pup4: #020a27;
+    --puf: rgba(73, 23, 52, 0.7);
+    --pur: rgb(49, 23, 73);
+    --pub: rgb(15, 1, 54);
+    --bl2: #380264;
+    --bl: #8709fd;
+    --bld: rgba(60, 7, 250, 0.3);
+    --bl1: #5f0ae7;
+    --bl3: #500144;
+    --bl4: rgb(255, 166, 0);
+    --pri: rgb(250, 217, 33);
+    --pri2: rgb(255, 219, 14);
+    --bg: rgb(8, 8, 8);
+    --bg2: rgba(5, 5, 5, 0.2);
+    --wht: rgb(247, 240, 240);
+    --gry: rgb(131, 122, 122);
+    --gryb: rgba(170, 160, 160, 0.1);
+    --gryh: rgba(173, 158, 158, 0.5);
+    --yel: #f8c611;
+    --yel2: rgba(184, 197, 5, 0.1);
+    --yel3: rgba(9, 93, 219, 0.9);
+    --red: #d31313;
+    --grad: linear-gradient(rgba(134, 8, 134, 0.7), rgba(10, 10, 136, 0.8));
+    --box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    --shad: 0 0 10px 5px var(--yel);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+    font-family: pp;
+    font-weight: 400;
+    box-sizing: border-box;
+    list-style-type: none;
+    bottom: 0;
+    outline: 0;
+    text-decoration: none;
+    color: var(--wht);
+	  transition: all 0.5s ease;
+    letter-spacing: 1.5px;
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+
+
+
+
+/* Animations */
+@keyframes rotatee {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes updown {
+    0%{
+        translate: 0px 10px;
+        transform: rotate(360deg);
+    }
+    100%{
+        translate: 0px 20px;
+    }
+}
+
+
+
+
+
+/* Login Section Styling */
+.login-section{
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .login-banner{
+    flex: .5;
+    width: 50vw;
+    height: 100vh;
+    background: linear-gradient(var(--pup3), var(--pup2));
+    position: relative;
+  }
+
+
+  .login-banner > :nth-child(1){
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: scale(1.5);
+  }
+
+  .login-banner > :nth-child(2){
+    animation: rotatee 15s linear infinite;
+    position: absolute;
+    top: -10%;
+    left: 0%;
+    width: 100%;
+    transform: scale(1);
+  }
+  
+
+  .signup-section{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .login-side{
+    width: max-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex: .5;
+}
+
+.login-header a{
+    color: var(--pup3);
+    font-size: 20px;
+    font-family: hh;
+    font-weight: bold;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.register-header a{
+    color: var(--pup3);
+    font-size: 20px;
+    font-family: hh;
+    font-weight: bold;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+.login-header a:hover{
+    transform: scale(1.01);
+}
+
+.login-side p{
+    color: var(--pup2);
+    font-size: large;
+}
+
+.login-head{
+    font-size: 40px;
+    color: var(--pup2);
+    font-weight: bold;
+}
+
+.login-head span{
+    font-size: 40px;
+    color: var(--pup3);
+    font-weight: bold;
+}
+
+input{
+    width: 340px;
+    padding: 1rem 1rem;
+    outline: none;
+    color: var(--pup3);
+    border-radius: 10px;
+    font-weight: bold;
+    opacity: 0.6;
+    border: 2px solid var(--gryh);
+}
+
+input::placeholder{
+    color: black;
+    font-size: larger;
+}
+
+input:focus{
+    opacity: 1;
+    border: 2px solid var(--pup3);
+}
+
+button{
+    background-color: var(--pup3);
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 6rem;
+    font-size: larger;
+    width: max-content;
+    cursor: pointer;
+    width: 50%;
+}
+
+button:hover{
+    background-color: var(--pup2);
+    translate: 0px 2px;
+}
+
+.swap-form{
+    color: var(--pup3);
+    cursor: pointer;
+}
+
+.hideform{
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 790px){
+    .login-banner{
+        display: none;
+    }
+
+    .login-side{
+        padding-top: 20%;
+        width: 100vw;
+    }
+
+    button{
+        width: 90%;
+    }
+
+}

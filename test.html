@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="shortcut icon" href="./images/logo.PNG" type="image/x-icon">
+        <title>Sippon - Home</title>
+    
+        <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    
+        <link rel="stylesheet" href="./css/all.min.css">
+        
+        <script src="./js/all.min.js"></script>
+        
+        <script defer src="./js/index.js"></script>
+        
+        <script src="./js/script.js"></script>
+        
+        
+        <script src="./js/jquery.min.js"></script>
+  <title>Color Drawing</title>
+  <style>
+    #drawing-area {
+      width: 800px;
+      height: 400px;
+      border: 1px solid black;
+      position: relative;
+    }
+    .color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="drawing-area"></div>
+
+  <script>
+    $(document).ready(function() {
+      var isDrawing = false;
+
+      $('#drawing-area').mousedown(function() {
+        isDrawing = true;
+      });
+
+      $('#drawing-area').mouseup(function() {
+        isDrawing = false;
+      });
+
+      $('#drawing-area').mousemove(function(event) {
+        if (isDrawing) {
+          var dot = $('<div class="color-dot"></div>');
+          var x = event.pageX - $(this).offset().left;
+          var y = event.pageY - $(this).offset().top;
+
+          dot.css({
+            left: x,
+            top: y,
+            background: getRandomColor()
+          });
+
+          $(this).append(dot);
+        }
+      });
+
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    });
+  </script>
+</body>
+</html>
