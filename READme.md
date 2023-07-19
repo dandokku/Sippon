@@ -20,11 +20,7 @@ Sippon incorporates the latest web technologies, including HTML, CSS, and jQuery
 
 4. **Game Descriptions**: Each game is accompanied by a detailed description, providing valuable insights to help users make informed choices.
 
-5. **Download Manager**: Sippon offers a streamlined download manager, allowing users to efficiently manage their game downloads and installations.
-
 6. **Community Interaction**: Users can engage with the Sippon community by sharing game reviews, participating in discussions, and interacting with fellow gamers.
-
-7. **Developer Showcase**: Sippon dedicates a section to highlight talented game developers, offering them a platform to showcase their work and gain recognition.
 
 ## Technology Stack
 
