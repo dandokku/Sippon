@@ -18,7 +18,7 @@ Sippon incorporates the latest web technologies, including HTML, CSS, and jQuery
 
 3. **Advanced Search and Filtering**: Users can conveniently search for their favorite games or browse through different categories, utilizing advanced search and filtering options.
 
-4. **Game Descriptions and Ratings**: Each game is accompanied by a detailed description and user ratings, providing valuable insights to help users make informed choices.
+4. **Game Descriptions**: Each game is accompanied by a detailed description, providing valuable insights to help users make informed choices.
 
 5. **Download Manager**: Sippon offers a streamlined download manager, allowing users to efficiently manage their game downloads and installations.
 
