@@ -37,7 +37,7 @@
   --red: #d31313;
   --grad: linear-gradient(rgba(134, 8, 134, 0.7), rgba(10, 10, 136, 0.8));
   --box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  --shad: 0 0 10px 5px var(--yel);
+  --shad: 0 0 2px 2px var(--puf);
 }
 
 
@@ -188,12 +188,12 @@ img{
     }
 }
   
-@keyframes movePath {
+@keyframes moveUpDown {
     0% {
       transform: translateX(0) translateY(0);
     }
     50% {
-      transform: translateX(100px) translateY(200px);
+      transform: translateY(50px);
     }
     100% {
       transform: translateX(0) translateY(0);
@@ -351,6 +351,8 @@ body::-webkit-scrollbar-thumb:hover{
     right: 0;
     z-index: 99999999;
     margin-bottom: 100%;
+    /* background: var(--pup4); */
+
   }
 
   
@@ -360,7 +362,6 @@ body::-webkit-scrollbar-thumb:hover{
     background: var(--pup4);
     transition: 1s ease-out;
     padding: 1rem 3rem;
-
 }
 
 .brand-name{
@@ -432,17 +433,103 @@ body::-webkit-scrollbar-thumb:hover{
   transform: scale(1.1);
 }
 
-.cart-content {
+.library-content{
+  position: absolute;
+  bottom: -530%;
+  right: .5%;
+  background-color: var(--pup3);
+  padding: 1rem;
+  width: max-content;
+  height: max-content;
+  border-radius: 10px;
   display: none;
-  background-color: var(--yel);
-  padding: 10rem;
 }
 
-.cart-content:hover {
-  display: block;
-  background-color: var(--red);
-  padding: 10rem;
+.library-head{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  width: 100%;
+  height: min-content;
 }
+
+.library-head h3{
+  color: var(--pup2);
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.library-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+  height: 400px;
+  padding: 1rem;
+  overflow-x: scroll;
+}
+
+.library-wrap::-webkit-scrollbar{
+  background-color: inherit;
+}
+
+.library-wrap::-webkit-scrollbar-thumb{
+  background-color: var(--wht);
+}
+
+.library-item{
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shad);
+  border-radius: 10px;
+  padding: .5rem;
+  width: 100%; */
+}
+
+.library-item img{
+  width: 100px;
+  height: 150px;
+  border-radius: inherit;
+}
+
+.library-item p{
+  font-size: 20px;
+}
+
+.play-btn{
+  border: none;
+  outline: none;
+  background-color: var(--pup3);
+  padding: .2rem .9rem;
+  font-weight: bold;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.play-btn:hover{
+  background-color: var(--pup3t);
+}
+
+.remove-btn{
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: var(--yel);
+  padding: .2rem .9rem;
+  font-weight: bold;
+  border-radius: inherit;
+}
+
+.remove-btn:hover{
+  background-color: var(--pup2);
+}
+
 
 
 .search{
@@ -595,7 +682,7 @@ body::-webkit-scrollbar-thumb:hover{
     border-radius: 10%;
     opacity: .8;
     transition: 1s ease-in;
-    animation: moveUpDown 5s linear infinite;
+    animation: moveUpDown 3s linear infinite;
 }
 
 .about-section{
@@ -702,6 +789,7 @@ body::-webkit-scrollbar-thumb:hover{
 
 .news-card:hover{
   background-color: var(--pup4);
+  transform: scale(1.01);
 }
 
 .news-image{
@@ -1277,7 +1365,7 @@ body::-webkit-scrollbar-thumb:hover{
   position: absolute;
   top: 20px;
   right: 20px;
-  padding: 5px 10px;
+  padding: 2px 9px;
   background-color: var(--red);
   height: max-content;
   color: #fff;
@@ -1460,6 +1548,26 @@ body::-webkit-scrollbar-thumb:hover{
   display: none;
 }
 
+.game-alert, .s-alert{
+  color: var(--pup2);
+  background-color: var(--pup3);
+  width: 40%;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 10px;
+  position: absolute;
+  bottom: -20%;
+  right: 0;
+  height: max-content;
+  z-index: 999999999999999999999999;
+  margin: 1rem;
+  display: none;
+}
+
 .check{
   font-size: 30px;
   border: 1px solid var(--pup2);
@@ -1512,15 +1620,16 @@ body::-webkit-scrollbar-thumb:hover{
 
 .s-section form input{
   outline: none;
-  border: 1px solid var(--pup3);
+  border: 2px solid var(--pup3);
   background-color: inherit;
   padding: .5rem 1rem;
   border-radius: 10px;
   color: white;
+  opacity: .5;
 }
 
 .s-section form input:focus{
-  border: 2px solid var(--pup3);
+  opacity: 1;
 }
 
 .s-section form button{
@@ -1769,26 +1878,25 @@ body::-webkit-scrollbar-thumb:hover{
 
   .nav ul{
     position: absolute;
-    left: 0%;
-    bottom: -60%;
+    top: 150%;
+    right: -30%;
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    background-color: inherit;
-    z-index: 99999;
-
-  }
-
-  .nav ul li a{
-    color: white;
-    background-color: rgb(77, 77, 63);
+    z-index: 9999999999999999999;
+    overflow: hidden;
+    max-height: 0;
+    flex-direction: column;
+    display: flex;
+    flex-direction: row;
   }
   
   .nav ul.active {
-    
+    overflow: visible;
+    background-color: var(--yel) !important;
   }
   
+  .other-links{
+    display: none;
+  }
 
   .nav-icon{
     display: block;

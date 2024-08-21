@@ -10,6 +10,7 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <script defer src="./js/login.js"></script>
     <script src="./js/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" defer async></script>
 </head>
 <body>
 
@@ -30,16 +31,15 @@
         <input class="email-input" type="email" name="lemail" id="lemail" placeholder="Enter Your Email" required />
         <input class="password-input" type="password" name="lpass" id="lpass" placeholder="Enter Your Password" required>
   
-        <button type="submit">Login</button>
+        <div class="g-recaptcha" data-sitekey="6Le8trkmAAAAAEdUV7ga9_n_Qff7pbvjJckkU4Yf" data-callback="allowLogin"></div>
+
+        <button type="submit" class="login-btn">Login</button>
 
         <p data-form="signup-section" class="swap-form">Don't Have an Account? Sign Up</a>
     </div>
 
 
   </form>
-
-  
-
 
   <form class="signup-section form hideform">
     <img src="/images/reshot-illustration-video-game-app-6HTCJRGPE8.png" alt="" class="login-banner">
@@ -50,7 +50,10 @@
   
         <input class="email-input" type="email" name="lemail" id="lemail" placeholder="Enter Your Email" required />
         <input class="password-input" type="password" name="lpass" id="lpass" placeholder="Enter Your Password" required>  
-        <button type="submit">Sign Up</button>
+        
+        <div class="g-recaptcha" data-sitekey="6Le8trkmAAAAAEdUV7ga9_n_Qff7pbvjJckkU4Yf" data-callback="allowLogin"></div>
+
+        <button type="submit" class="login-btn">Sign Up</button>
 
         <p data-form="login-section" class="swap-form">Have Have an Account? Sign In</p>
     </div>

@@ -1,0 +1,2 @@
+- Check to See if an Ajax request can be made to get games from a gaming website
+- Get More Game Images and create More Game Cards

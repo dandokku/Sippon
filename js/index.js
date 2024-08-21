@@ -1,7 +1,9 @@
 // PRELOADER FUNCTIONALITY
 $(window).on("load", function () {
     $('#js-preloader').addClass('loaded');
-  $(".home-header").addClass("show"); 
+    $(".home-header").addClass("show"); 
+  showLibraryContent(games);
+  $(".library-content").hide()
 })
 
 $(document).ready(function () {
@@ -100,7 +102,7 @@ $(".explore-wrap img").on("click", function () {
 })
 
 $(".close-btn").on("click", function () {
-  $(".gamee-details").fadeOut()
+  $(".library-content").fadeOut()
 })
 
 
@@ -283,21 +285,11 @@ const allFaqs = [
   },
   {
     id: 112,
-    question: "Can I request a refund if I change my mind or encounter technical issues?",
-    answer: "Our refund policy may vary depending on the specific circumstances and the game publisher's policies. Please refer to our refund policy page for detailed information. We strive to provide the best possible customer service, so reach out to our support team if you encounter any issues.",
-  },
-  {
-    id: 113,
     question: "Are the games on your website region-locked?",
     answer: "Game region-locking policies vary depending on the game and publisher. We indicate region-locking information on the game's product page whenever applicable. Make sure to check the details before making a purchase.",
   },
   {
     id: 114,
-    question: "How can I access the games I purchased if I switch to a new computer or gaming console?",
-    answer: "Most of the games you purchase are tied to your account. You can log in to your account on your new device or console and access your purchased games from there. Some games may require reinstallation or activation steps, so be sure to follow the instructions provided.",
-  },
-  {
-    id: 115,
     question: "Can I pre-order upcoming games on your website?",
     answer: "Yes, we often offer pre-orders for highly anticipated games. Simply visit the game's product page and click on the Pre-order button. Pre-order benefits, such as exclusive bonuses or early access, may be available for certain games",
   },
@@ -366,18 +358,70 @@ function closeModal() {
 }
 
 function addToLibrary(id) {
-  console.log("Warra Welp")
   const findGame = games.find(game => game.id === id);
   if (findGame){
-    alert("Game already in Library")
+    $(".game-alert").slideDown(2000, function () {
+      $(".game-alert").slideUp();
+    })
   }
   else{
     const product = allGames.filter(product => product.id === id)[0]
     games = [...games, {...product, qty: 1}]
     localStorage.setItem("sippon__games", JSON.stringify(games))
-    showCartContent(games)
+    // localStorage.clear("sippon__games", JSON.stringify(games))
+    showLibraryContent(games)
   }
 }
+
+// $("#cartbtn").on("click", function () {
+//   $(".library-content").show()
+//   console.log("Welp Welp WEP SNVNRI")
+// })
+
+$("").on("click", function () {
+  console.log("Welp Welp Welp Welp WELP wel WELP welp WELP welp welp")
+})
+
+function showLibraryContent(games) {
+const libraryWrap = $(".library-wrap");
+libraryWrap.empty();
+
+games.forEach(game => {
+  const {tag, gameTitle, image, qty } = game;
+  libraryWrap.append(`
+    <div class="explore-wrap">
+      <div class="explore-image-wrap">
+          <img src="${image}" alt="${gameTitle}" class="explore-image">
+          <p class="image-tag">${tag}</p>
+      </div>
+      <h4 class="explore-name">${gameTitle}</h4>   
+      <button class="play-btn">Play</button>
+      <button class="remove-btn" onclick="removeFromLibrary('${gameTitle}')">Remove</button>   
+    </div>
+  `);
+});
+  
+if (games.length === 0) {
+  $(".library-content").hide();
+} else {
+  $(".library-content").show();
+  }
+  
+  // <div class="library-item">
+  //     <img src="${image}" alt="${gameTitle}">
+  //     <p>${gameTitle}</p>
+      
+  //   </div>
+
+}
+
+function removeFromLibrary(gameTitle) {
+  games = games.filter(game => game.gameTitle !== gameTitle);
+  localStorage.setItem("sippon__games", JSON.stringify(games));
+  showLibraryContent(games);
+}
+
+
 
 let games = JSON.parse(localStorage.getItem("sippon__games")) || [];
 
@@ -476,22 +520,23 @@ $(document).ready(function() {
         console.log('Success!', response.status, response.text);
         // Clear form fields
         $('#myForm')[0].reset();
-        $(".success-msg").fadeIn(7000, function () {
-          $(".success-msg").fadeOut()
+        $(".success-msg").slideDown(2000, function () {
+          $(".success-msg").slideUp()
         })
       }, function(error) {
         console.log('Error:', error);
-        $(".error-msg").fadeIn(5000, function () {
-          $(".error-msg").fadeOut()
+        $(".error-msg").slideDown(2000, function () {
+          $(".error-msg").slideUp()
         })
       });
   });
 
   $(".s-section form, .subscribe-form").on('submit', function (e) {
+    $('.s-section form, .subscribe-form')[0].reset();
     e.preventDefault()
-    console.log("wepolplpelwpelp")
-    $(".success-msg").fadeIn(7000, function () {
-      $(".success-msg").fadeOut()
+    $(".s-alert").slideDown(2000, function () {
+      $(".s-alert").slideUp()
+      
     })
   })
 
@@ -501,3 +546,17 @@ $(document).ready(function() {
     window.location("/index.html")
   })
 });
+
+
+$(document).ready(function() {
+  // Initially hide the library content
+  $(".library-content").hide();
+
+  // When the cartbtn is clicked, toggle the library content's visibility
+  $("#cartbtn").on("click", function() {
+    $(".library-content").toggle();
+  });
+});
+
+
+
