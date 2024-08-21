@@ -445,6 +445,14 @@ body::-webkit-scrollbar-thumb:hover{
   display: none;
 }
 
+.l-alert{
+  display: none;
+}
+
+.l-alert.active{
+  display: flex;
+}
+
 .library-head{
   display: flex;
   align-items: center;
@@ -456,7 +464,7 @@ body::-webkit-scrollbar-thumb:hover{
 }
 
 .library-head h3{
-  color: var(--pup2);
+  color: var(--wht);
   font-size: 35px;
   font-weight: bold;
 }
@@ -1548,8 +1556,8 @@ body::-webkit-scrollbar-thumb:hover{
   display: none;
 }
 
-.game-alert, .s-alert{
-  color: var(--pup2);
+.game-alert, .s-alert, .game-alerts{
+  color: var(--wht);
   background-color: var(--pup3);
   width: 40%;
   font-size: 20px;
@@ -1877,21 +1885,21 @@ body::-webkit-scrollbar-thumb:hover{
   }
 
   .nav ul{
-    position: absolute;
-    top: 150%;
-    right: -30%;
-    width: 100%;
-    z-index: 9999999999999999999;
-    overflow: hidden;
-    max-height: 0;
     flex-direction: column;
-    display: flex;
-    flex-direction: row;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: var(--pup4);
+    width: 100%;
+    text-align: center;
+    display: none;
+    padding: 1rem;
+    height: max-content;
   }
   
   .nav ul.active {
     overflow: visible;
-    background-color: var(--yel) !important;
+    display: flex;
   }
   
   .other-links{
