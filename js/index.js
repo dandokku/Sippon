@@ -2,11 +2,12 @@
 $(window).on("load", function () {
     $('#js-preloader').addClass('loaded');
     $(".home-header").addClass("show"); 
-  showLibraryContent(games);
-  $(".library-content").hide()
+    showLibraryContent(games);
+    $(".library-content").hide()
 })
 
 $(document).ready(function () {
+  
   // FIXED NAVBAR FUNCTIONALITY
     $(window).scroll(function(){
         if($(this).scrollTop() > 200){
@@ -74,10 +75,10 @@ $(".showall-btn").click(function () {
 function sortItems(category) {
   exploreWraps.each(function() {
     var exploreWrap = $(this);
-    exploreWrap.find('.explore-wrap').hide(); // Hide all explore wraps
+    exploreWrap.find('.explore-wrap').hide(); // Hide all explore wraps before filtering
 
     // Show explore wraps with matching category
-    exploreWrap.find('.image-tag').each(function() {
+    exploreWrap.find('.image-tag').each(function() { // This runs through all the cards with the image tag and displays them
       var imageTag = $(this);
       if (imageTag.text() === category) {
         imageTag.closest('.explore-wrap').show();
@@ -147,7 +148,6 @@ $(document).ready(function() {
 });  
 
 })
-
 
 // DISPLAYING GAME CARDS FUNCTIONALITY
 const allGames = [
@@ -352,7 +352,6 @@ const { id, image, name } = pop;
 `)
 })
 
-
 function closeModal() {
   $(".gamee-details").fadeOut()
 }
@@ -370,17 +369,11 @@ function addToLibrary(id) {
     localStorage.setItem("sippon__games", JSON.stringify(games))
     // localStorage.clear("sippon__games", JSON.stringify(games))
     showLibraryContent(games)
+    $(".game-alerts").slideDown(2000, function () {
+      $(".game-alerts").slideUp();
+    })
   }
 }
-
-// $("#cartbtn").on("click", function () {
-//   $(".library-content").show()
-//   console.log("Welp Welp WEP SNVNRI")
-// })
-
-$("").on("click", function () {
-  console.log("Welp Welp Welp Welp WELP wel WELP welp WELP welp welp")
-})
 
 function showLibraryContent(games) {
 const libraryWrap = $(".library-wrap");
@@ -403,8 +396,11 @@ games.forEach(game => {
   
 if (games.length === 0) {
   $(".library-content").hide();
+  $(".l-alert").addClass("active")
 } else {
+  // $(".library-content").empty()
   $(".library-content").show();
+  $(".l-alert").removeClass("active")
   }
   
   // <div class="library-item">
@@ -420,8 +416,6 @@ function removeFromLibrary(gameTitle) {
   localStorage.setItem("sippon__games", JSON.stringify(games));
   showLibraryContent(games);
 }
-
-
 
 let games = JSON.parse(localStorage.getItem("sippon__games")) || [];
 
@@ -471,26 +465,6 @@ $(".explore-wrap").on("click", function () {
 function closeModal() {
   $(".gamee-details").fadeOut();
 }
-
-// function showLibraryContent(games) {
-//   const gameWrap = $(.cart-wrap)
-// }
-
-
-$(document).ready(function() {
-  $('.popular-wrap').hover(function() {
-    var video = $(this).find('video')[0];
-    if (video) {
-      video.play();
-    }
-  }, function() {
-    var video = $(this).find('video')[0];
-    if (video) {
-      video.pause();
-      video.currentTime = 0;
-    }
-  });
-});
 
 $(document).ready(function() {
   $('.nav-icon').click(function() {
@@ -547,7 +521,6 @@ $(document).ready(function() {
   })
 });
 
-
 $(document).ready(function() {
   // Initially hide the library content
   $(".library-content").hide();
@@ -557,6 +530,3 @@ $(document).ready(function() {
     $(".library-content").toggle();
   });
 });
-
-
-
